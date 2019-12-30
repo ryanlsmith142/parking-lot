@@ -17,7 +17,7 @@ class RegisterForm extends React.Component {
         this.setState({value: event.target.value})
 
 
-    }
+    };
 
     render() {
         return (
