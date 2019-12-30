@@ -29,6 +29,26 @@ class RegisterForm extends React.Component {
                         onChange={this.registerButton}
                     />
                     <input
+                        type='text'
+                        value={this.state.password}
+                        onChange={this.registerButton}
+                    />
+                    <input
+                        type='text'
+                        value={this.state.email}
+                        onChange={this.registerButton}
+                    />
+                    <input
+                        type='text'
+                        value={this.state.firstName}
+                        onChange={this.registerButton}
+                    />
+                    <input
+                        type='text'
+                        value={this.state.lastName}
+                        onChange={this.registerButton}
+                    />
+                    <input
                         type='submit'
                     />
                 </form>
@@ -36,3 +56,5 @@ class RegisterForm extends React.Component {
         )
     }
 }
+
+export default RegisterForm
