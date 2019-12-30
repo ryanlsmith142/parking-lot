@@ -11,13 +11,16 @@ class RegisterForm extends React.Component {
         lastName: ''
     };
 
-    registerButton = event => {
+
+    setStateToNewUserInfo = event => {
         event.preventDefault();
 
         this.setState({value: event.target.value})
 
 
     };
+
+
 
     render() {
         return (
@@ -28,7 +31,7 @@ class RegisterForm extends React.Component {
                         <input
                             type='text'
                             value={this.state.username}
-                            onChange={this.registerButton}
+                            onChange={this.setStateToNewUserInfo}
                         />
                     </label>
                     <label>
@@ -36,7 +39,7 @@ class RegisterForm extends React.Component {
                         <input
                             type='text'
                             value={this.state.password}
-                            onChange={this.registerButton}
+                            onChange={this.setStateToNewUserInfo}
                         />
                     </label>
                     <label>
@@ -44,7 +47,7 @@ class RegisterForm extends React.Component {
                         <input
                             type='text'
                             value={this.state.email}
-                            onChange={this.registerButton}
+                            onChange={this.setStateToNewUserInfo}
                         />
                     </label>
                     <label>
@@ -52,7 +55,7 @@ class RegisterForm extends React.Component {
                         <input
                             type='text'
                             value={this.state.firstName}
-                            onChange={this.registerButton}
+                            onChange={this.setStateToNewUserInfo}
                         />
                     </label>
                     <label>
@@ -60,7 +63,7 @@ class RegisterForm extends React.Component {
                         <input
                             type='text'
                             value={this.state.lastName}
-                            onChange={this.registerButton}
+                            onChange={this.setStateToNewUserInfo}
                         />
                     </label>
                     <input

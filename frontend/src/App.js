@@ -7,17 +7,14 @@ import RegisterForm from './components/RegisterForm.js';
 class App extends React.Component {
     state = {};
 
-    componentDidMount() {
-        setInterval(this.hello, 250);
-    }
-
     render() {
         return (
             <BrowserRouter>
                 <div>
                     <Switch>
                         <Route path={"/register"}
-                               render={routeProps => <RegisterForm  {...routeProps}/>}/>
+                               render={routeProps => <RegisterForm  {...routeProps}/>}
+                        />
                     </Switch>
                 </div>
             </BrowserRouter>
