@@ -3,11 +3,7 @@ package com.parkinglot.parkinglot.controllers;
 import com.parkinglot.parkinglot.models.User;
 import com.parkinglot.parkinglot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RegisterUserController {
@@ -16,7 +12,19 @@ public class RegisterUserController {
     UserRepository userDao;
 
     @PostMapping("api/register")
-    public void registerUser(@RequestBody User newUser) {
+    public void registerUser(@RequestParam String email,
+                             @RequestParam String password,
+                             @RequestParam String username,
+                             @RequestParam String firstName,
+                             @RequestParam String lastName) {
+        User newUser = new User();
+
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.setUsername(username);
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
+
         userDao.save(newUser);
     }
 }

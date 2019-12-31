@@ -20,7 +20,7 @@ class RegisterForm extends React.Component {
     // registerUser = () => {
     //     axios.post("/api/register", `email=${this.state.email}
     //                                             &password=${this.state.password}
-    //                                             &userName=${this.state.displayName}
+    //                                             &userName=${this.state.username}
     //                                             &firstName=${this.state.firstName}
     //                                             &lastName=${this.state.lastName}`)
     // };
