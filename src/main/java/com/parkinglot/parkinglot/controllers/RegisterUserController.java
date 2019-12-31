@@ -11,7 +11,7 @@ public class RegisterUserController {
     @Autowired
     UserRepository userDao;
 
-    @PostMapping("api/register")
+    @PostMapping("/api/register")
     public void registerUser(@RequestParam String email,
                              @RequestParam String password,
                              @RequestParam String username,
@@ -24,6 +24,7 @@ public class RegisterUserController {
         newUser.setUsername(username);
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
+        newUser.setAdmin(false);
 
         userDao.save(newUser);
     }

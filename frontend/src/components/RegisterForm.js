@@ -22,7 +22,8 @@ class RegisterForm extends React.Component {
                                                 &password=${this.state.password}
                                                 &username=${this.state.username}
                                                 &firstName=${this.state.firstName}
-                                                &lastName=${this.state.lastName}`)
+                                                &lastName=${this.state.lastName}`);
+        console.log("hello from registerUser()")
     };
 
     render() {
@@ -71,7 +72,7 @@ class RegisterForm extends React.Component {
                     </label>
                     <input
                         type='submit'
-                        onChange={this.registerUser}
+                        onClick={this.registerUser}
                     />
                 </form>
             </div>
