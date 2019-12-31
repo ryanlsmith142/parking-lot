@@ -12,15 +12,15 @@ class RegisterForm extends React.Component {
         lastName: ''
     };
 
-    setStateToNewUserInfo = event => {
+    setStateToNewUserInfo = type => event => {
         event.preventDefault();
-        this.setState({value: event.target.value})
+        this.setState({[type]: event.target.value})
     };
 
     registerUser = () => {
         axios.post("/api/register", `email=${this.state.email}
                                                 &password=${this.state.password}
-                                                &userName=${this.state.username}
+                                                &username=${this.state.username}
                                                 &firstName=${this.state.firstName}
                                                 &lastName=${this.state.lastName}`)
     };
@@ -32,41 +32,41 @@ class RegisterForm extends React.Component {
                     <label>
                         Username:
                         <input
-                            type='text'
-                            value={this.state.username}
-                            onChange={this.setStateToNewUserInfo}
+                            type={"username"}
+                            name={"username"}
+                            onChange={this.setStateToNewUserInfo("username")}
                         />
                     </label>
                     <label>
                         Password:
                         <input
-                            type='text'
-                            value={this.state.password}
-                            onChange={this.setStateToNewUserInfo}
+                            type={'password'}
+                            name={'password'}
+                            onChange={this.setStateToNewUserInfo('password')}
                         />
                     </label>
                     <label>
                         Email:
                         <input
-                            type='text'
-                            value={this.state.email}
-                            onChange={this.setStateToNewUserInfo}
+                            type={'email'}
+                            name={'email'}
+                            onChange={this.setStateToNewUserInfo('email')}
                         />
                     </label>
                     <label>
                         First Name:
                         <input
-                            type='text'
-                            value={this.state.firstName}
-                            onChange={this.setStateToNewUserInfo}
+                            type={'firstName'}
+                            name={'firstName'}
+                            onChange={this.setStateToNewUserInfo('firstName')}
                         />
                     </label>
                     <label>
                         Last Name:
                         <input
-                            type='text'
-                            value={this.state.lastName}
-                            onChange={this.setStateToNewUserInfo}
+                            type={'lastName'}
+                            name={'lastName'}
+                            onChange={this.setStateToNewUserInfo('lastName')}
                         />
                     </label>
                     <input
