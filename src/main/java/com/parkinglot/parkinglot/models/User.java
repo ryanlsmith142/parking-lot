@@ -35,7 +35,7 @@ public class User {
     @Column
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questions")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Question> questions;
 
     public User() {}
@@ -112,5 +112,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }

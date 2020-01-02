@@ -10,10 +10,6 @@ public class Question {
     private long id;
 
     @Column(nullable = false)
-
-    private long userId;
-
-    @Column(nullable = false)
     private String question;
 
     @Column
@@ -29,8 +25,9 @@ public class Question {
     @JoinColumn (name = "user_id")
     private User user;
 
+    public Question() {}
+
     public Question(long userId, String question, String description, long categoryId, long helpfulVoteCount, User user) {
-        this.userId = userId;
         this.question = question;
         this.description = description;
         this.categoryId = categoryId;
@@ -44,14 +41,6 @@ public class Question {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 
     public String getQuestion() {
