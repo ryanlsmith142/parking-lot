@@ -3,6 +3,7 @@ package com.parkinglot.parkinglot.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -33,6 +34,9 @@ public class User {
 
     @Column
     private String lastName;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questions")
+    private List<Question> questions;
 
     public User() {}
 

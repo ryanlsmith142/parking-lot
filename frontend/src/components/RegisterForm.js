@@ -23,7 +23,6 @@ class RegisterForm extends React.Component {
                                                 &username=${this.state.username}
                                                 &firstName=${this.state.firstName}
                                                 &lastName=${this.state.lastName}`);
-        console.log("hello from registerUser()")
     };
 
     render() {
