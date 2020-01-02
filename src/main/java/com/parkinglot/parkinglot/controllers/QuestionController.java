@@ -35,8 +35,12 @@ public class QuestionController {
                                @RequestParam long helpfulVoteCount) {
 
         Question newQuestion = new Question();
+        User userThatCreatedQuestion = userDao.getOne(userId);
 
-
-
+        newQuestion.setUser(userThatCreatedQuestion);
+        newQuestion.setQuestion(question);
+        newQuestion.setDescription(description);
+        newQuestion.setCategoryId(categoryId);
+        newQuestion.setHelpfulVoteCount(helpfulVoteCount);
     }
 }
