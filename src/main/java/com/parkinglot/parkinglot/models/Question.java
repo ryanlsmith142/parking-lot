@@ -22,15 +22,19 @@ public class Question {
     @Column(nullable = false)
     private long categoryId;
 
+    @Column
+    private long helpfulVoteCount;
+
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
 
-    public Question(long userId, String question, String description, long categoryId, User user) {
+    public Question(long userId, String question, String description, long categoryId, long helpfulVoteCount, User user) {
         this.userId = userId;
         this.question = question;
         this.description = description;
         this.categoryId = categoryId;
+        this.helpfulVoteCount = helpfulVoteCount;
         this.user = user;
     }
 
@@ -72,6 +76,14 @@ public class Question {
 
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public long getHelpfulVoteCount() {
+        return helpfulVoteCount;
+    }
+
+    public void setHelpfulVoteCount(long helpfulVoteCount) {
+        this.helpfulVoteCount = helpfulVoteCount;
     }
 
     public User getUser() {
