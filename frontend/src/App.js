@@ -4,18 +4,8 @@ import './App.css';
 
 import RegisterForm from './components/RegisterForm.js';
 import CreateShowQuestion from "./components/CreateShowQuestion";
-import axios from "axios";
 
 class App extends React.Component {
-
-    componentDidMount() {
-        axios.get(`/api/1/users-questions`)
-            .then( res => {
-                const question = res.data;
-                console.log(question);
-                return question;
-            });
-    }
 
     render() {
         return (

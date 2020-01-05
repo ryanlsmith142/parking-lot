@@ -15,15 +15,16 @@ class CreateShowQuestion extends React.Component {
 
 class QuestionList extends React.Component {
     state = {
-        questions: null
+        questions: []
     };
 
     componentDidMount() {
         axios.get(`/api/1/users-questions`)
             .then( res => {
-                const question = res.data;
-                console.log(question);
-                return question;
+                const questions = res.data;
+                this.setState({
+                    questions: questions
+                })
             });
     }
 
@@ -31,7 +32,7 @@ class QuestionList extends React.Component {
         return(
             <div>
                 <Question
-
+                    questions={this.state.questions}
                 />
             </div>
         )
@@ -42,7 +43,7 @@ class Question extends React.Component {
     render() {
         return(
             <div>
-                <p>Hello</p>
+                <p>{this.props.questions.categoryId}</p>
             </div>
         )
     }
