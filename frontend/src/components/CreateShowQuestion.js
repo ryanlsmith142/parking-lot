@@ -2,19 +2,7 @@ import React from 'react'
 import axios from "axios";
 
 class CreateShowQuestion extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <QuestionList/>
-                {/*<CreateQuestionForm/>*/}
-            </div>
-        )
-    }
-}
-
-class QuestionList extends React.Component {
-    state = {
+    state={
         questions: []
     };
 
@@ -29,11 +17,29 @@ class QuestionList extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
-                <Question
+                <QuestionList
                     questions={this.state.questions}
                 />
+                {/*<CreateQuestionForm/>*/}
+            </div>
+        )
+    }
+}
+
+class QuestionList extends React.Component {
+
+    render() {
+        const questions = this.props.questions.map((question) => (
+            <Question
+                key={question.id}
+                id={question.id}
+            />
+        ));
+        return(
+            <div id='questions'>
+                {questions}
             </div>
         )
     }
@@ -43,7 +49,7 @@ class Question extends React.Component {
     render() {
         return(
             <div>
-                <p>{this.props.questions.categoryId}</p>
+                <p>{this.props.id}</p>
             </div>
         )
     }
