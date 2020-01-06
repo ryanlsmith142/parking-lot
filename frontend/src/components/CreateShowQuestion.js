@@ -35,6 +35,9 @@ class QuestionList extends React.Component {
             <Question
                 key={question.id}
                 id={question.id}
+                question={question.question}
+                description={question.description}
+                helpfulVoteCount={question.helpfulVoteCount}
             />
         ));
         return(
@@ -49,7 +52,38 @@ class Question extends React.Component {
     render() {
         return(
             <div>
-                <p>{this.props.id}</p>
+                <p>{this.props.question}</p>
+                <p>{this.props.helpfulVoteCount}</p>
+                <HelpfulVoteCounter
+                    helpfulVoteCount={this.props.helpfulVoteCount}
+                />
+            </div>
+        )
+    }
+}
+
+class HelpfulVoteCounter extends React.Component {
+    state = {
+        helpfulVoteCount: this.props.helpfulVoteCount
+    };
+
+    incrementVoteCount = () => {
+        this.setState(prevState => ({
+            helpfulVoteCount: prevState.helpfulVoteCount + 1
+        }))
+    };
+
+    decrementVoteCount = () => {
+        this.setState( prevState => ({
+            helpfulVoteCount: prevState.helpfulVoteCount -1
+        }))
+    };
+
+    render() {
+        return (
+            <div>
+                <button className='increment' onClick={this.incrementVoteCount}> + </button>
+                <button className='decrement' onClick={this.decrementVoteCount}> - </button>
             </div>
         )
     }
