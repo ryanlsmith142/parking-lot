@@ -65,8 +65,17 @@ class QuestionList extends React.Component {
 }
 
 class Question extends React.Component {
+    state = {
+        helpfulVoteCount: this.props.helpfulVoteCount,
+    };
+
     handleHelpfulUpVote = () => {
-        this.props.handleHelpfulUpVote(this.props.id)
+        this.props.handleHelpfulUpVote(this.props.id);
+        this.updateVoteCountInDatabase();
+    };
+
+    updateVoteCountInDatabase = () => {
+        axios.post(`/api/${this.props.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${this.state.helpfulVoteCount}`)
     };
 
     render() {
