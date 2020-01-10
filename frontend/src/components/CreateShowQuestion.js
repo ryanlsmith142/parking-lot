@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from "axios";
-import HelpfulVoteCounter from '../components/HelpfulVoteCounter'
 
 class CreateShowQuestion extends React.Component {
     render() {
@@ -16,7 +15,7 @@ class CreateShowQuestion extends React.Component {
 class QuestionList extends React.Component {
 
     state={
-        questions: []
+        questions: [],
     };
 
     componentDidMount() {
@@ -34,6 +33,7 @@ class QuestionList extends React.Component {
             if(question.id === questionId) {
                 return Object.assign({}, question, {
                     helpfulVoteCount: question.helpfulVoteCount + 1,
+
                 });
             } else {
                 return question;
@@ -41,7 +41,19 @@ class QuestionList extends React.Component {
         });
         this.setState({
             questions: nextQuestions,
-        })
+        });
+    };
+
+    handleHelpfulUpVote = (questionId) => {
+        const nextQuestions = this.state.questions.map((question) => {
+            if(question.id === questionId) {
+                axios.post(`/api/${question.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${question.helpfulVoteCount}`);
+            }
+        });
+    }
+
+    updateHelpfulVoteCountInDatabase = (questionId, helpfulVoteCount) => {
+        axios.post(`/api/${questionId}/updateHelpfulVoteCount`, `helpfulVoteCount=${helpfulVoteCount}`);
     };
 
     render() {
@@ -53,6 +65,7 @@ class QuestionList extends React.Component {
                 description={question.description}
                 helpfulVoteCount={question.helpfulVoteCount}
                 handleHelpfulUpVote={this.handleHelpfulUpVote}
+                updateHelpfulVoteCountInDatabase={this.updateHelpfulVoteCountInDatabase}
             />
         ));
 
@@ -65,17 +78,10 @@ class QuestionList extends React.Component {
 }
 
 class Question extends React.Component {
-    state = {
-        helpfulVoteCount: this.props.helpfulVoteCount,
-    };
 
     handleHelpfulUpVote = () => {
         this.props.handleHelpfulUpVote(this.props.id);
-        this.updateVoteCountInDatabase();
-    };
-
-    updateVoteCountInDatabase = () => {
-        axios.post(`/api/${this.props.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${this.state.helpfulVoteCount}`)
+        this.props.updateHelpfulVoteCountInDatabase(this.props.id, this.props.helpfulVoteCount)
     };
 
     render() {
