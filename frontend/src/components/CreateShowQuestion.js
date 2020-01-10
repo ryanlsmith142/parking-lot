@@ -33,7 +33,6 @@ class QuestionList extends React.Component {
             if(question.id === questionId) {
                 return Object.assign({}, question, {
                     helpfulVoteCount: question.helpfulVoteCount + 1,
-
                 });
             } else {
                 return question;
@@ -44,16 +43,12 @@ class QuestionList extends React.Component {
         });
     };
 
-    handleHelpfulUpVote = (questionId) => {
-        const nextQuestions = this.state.questions.map((question) => {
+    updateHelpfulVoteCountInDatabase = (questionId) => {
+        this.state.questions.map((question) => {
             if(question.id === questionId) {
                 axios.post(`/api/${question.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${question.helpfulVoteCount}`);
             }
         });
-    }
-
-    updateHelpfulVoteCountInDatabase = (questionId, helpfulVoteCount) => {
-        axios.post(`/api/${questionId}/updateHelpfulVoteCount`, `helpfulVoteCount=${helpfulVoteCount}`);
     };
 
     render() {
@@ -65,7 +60,6 @@ class QuestionList extends React.Component {
                 description={question.description}
                 helpfulVoteCount={question.helpfulVoteCount}
                 handleHelpfulUpVote={this.handleHelpfulUpVote}
-                updateHelpfulVoteCountInDatabase={this.updateHelpfulVoteCountInDatabase}
             />
         ));
 
@@ -78,10 +72,23 @@ class QuestionList extends React.Component {
 }
 
 class Question extends React.Component {
+    state = {
+        didHelpfulVoteCountChange: false,
+    };
+
 
     handleHelpfulUpVote = () => {
         this.props.handleHelpfulUpVote(this.props.id);
-        this.props.updateHelpfulVoteCountInDatabase(this.props.id, this.props.helpfulVoteCount)
+        this.setState({
+            didHelpfulVoteCountChange: true,
+        });
+
+        if(this.state.didHelpfulVoteCountChange === true) {
+            axios.post(`/api/${this.props.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${this.props.helpfulVoteCount}`);
+            this.setState({
+                didHelpfulVoteCountChange: false,
+            })
+        }
     };
 
     render() {
