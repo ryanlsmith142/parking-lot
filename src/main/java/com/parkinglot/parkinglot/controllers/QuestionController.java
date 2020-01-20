@@ -42,5 +42,7 @@ public class QuestionController {
         newQuestion.setDescription(description);
         newQuestion.setCategoryId(categoryId);
         newQuestion.setHelpfulVoteCount(helpfulVoteCount);
+
+        questionDao.save(newQuestion);
     }
 }
