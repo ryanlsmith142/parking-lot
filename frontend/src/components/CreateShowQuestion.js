@@ -80,7 +80,7 @@ class CreateQuestionForm extends React.Component {
         userId: 1
     };
 
-    setStateToNewQuestion = type => {
+    setStateToNewQuestion = type => event => {
         event.preventDefault();
         this.setState({[type]: event.target.value})
     };
