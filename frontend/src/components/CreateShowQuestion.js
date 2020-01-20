@@ -6,7 +6,7 @@ class CreateShowQuestion extends React.Component {
         return (
             <div>
                 <QuestionList />
-                {/*<CreateQuestionForm/>*/}
+                <CreateQuestionForm/>
             </div>
         )
     }
@@ -43,13 +43,13 @@ class QuestionList extends React.Component {
         });
     };
 
-    updateHelpfulVoteCountInDatabase = (questionId) => {
-        this.state.questions.map((question) => {
-            if(question.id === questionId) {
-                axios.post(`/api/${question.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${question.helpfulVoteCount}`);
-            }
-        });
-    };
+    // updateHelpfulVoteCountInDatabase = (questionId) => {
+    //     this.state.questions.map((question) => {
+    //         if(question.id === questionId) {
+    //             axios.post(`/api/${question.id}/updateHelpfulVoteCount`, `helpfulVoteCount=${question.helpfulVoteCount}`);
+    //         }
+    //     });
+    // };
 
     render() {
         const questions = this.state.questions.map((question) => (
@@ -71,6 +71,16 @@ class QuestionList extends React.Component {
     }
 }
 
+class CreateQuestionForm extends React.Component {
+    state = {
+        question: "",
+        description: "",
+        categoryId: "",
+        helpfulVoteCount: 0,
+        userId: 1
+    }
+
+}
 class Question extends React.Component {
     state = {
         didHelpfulVoteCountChange: false,
