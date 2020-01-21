@@ -1,9 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import './App.css';
-
-import RegisterForm from './components/RegisterForm.js';
-import CreateShowQuestion from "./components/CreateShowQuestion";
+import ParkingLotDashboard from './components/ParkingLotDashboard.js';
 
 class App extends React.Component {
 
@@ -15,8 +13,8 @@ class App extends React.Component {
                         <Route path={"/register"}
                                render={routeProps => <RegisterForm  {...routeProps}/>}
                         />
-                        <Route path={"/1/users-questions"}
-                               render={routeProps => <CreateShowQuestion {...routeProps}/>}
+                        <Route path={"/1/parkingLotDashboard"}
+                               render={routeProps => <ParkingLotDashboard {...routeProps}/>}
                         />
                     </Switch>
                 </div>

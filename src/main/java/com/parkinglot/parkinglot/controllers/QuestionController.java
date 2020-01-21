@@ -18,7 +18,7 @@ public class QuestionController {
     @Autowired
     UserRepository userDao;
 
-    @GetMapping("/api/{userId}/users-questions")
+    @GetMapping("/api/{userId}/parkingLotDashBoard")
     public List<Question> showUsersQuestions(@PathVariable long userId) {
         User loggedInUser = userDao.getOne(userId);
 
