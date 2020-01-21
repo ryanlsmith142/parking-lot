@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import CreateQuestionForm from './CreateQuestionForm.js';
 import QuestionList from './QuestionList.js';
 

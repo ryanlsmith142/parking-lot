@@ -9,7 +9,7 @@ class QuestionList extends React.Component {
     };
 
     componentDidMount() {
-        axios.get(`/api/1/users-questions`)
+        axios.get(`/api/1/parkingLotDashboard`)
             .then( res => {
                 const questions = res.data;
                 this.setState({
@@ -26,7 +26,6 @@ class QuestionList extends React.Component {
                 question={question.question}
                 description={question.description}
                 helpfulVoteCount={question.helpfulVoteCount}
-                handleHelpfulUpVote={this.handleHelpfulUpVote}
             />
         ));
 

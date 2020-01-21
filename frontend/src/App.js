@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import './App.css';
 import ParkingLotDashboard from './components/ParkingLotDashboard.js';
+import RegisterForm from './components/RegisterForm.js';
 
 class App extends React.Component {
 
