@@ -1,0 +1,22 @@
+.main-div {
+    height: 100vh;
+    width: 100%;
+}
+
+.dashboard-header {
+    border: 1px black solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-nav {
+    padding: 0;
+    width: 25%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.dashboard-nav li {
+    background: blue;
+}
