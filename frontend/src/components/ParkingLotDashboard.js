@@ -10,8 +10,8 @@ class ParkingLotDashboard extends React.Component {
                 <header className="dashboard-header">
                     <h1 className="dashboard-h1">The Parking Lot</h1>
                     <ul className="dashboard-nav">
-                        <li>Create Question</li>
-                        <li>Show Questions</li>
+                        <li><a>Create Question</a></li>
+                        <li><a>Show Questions</a></li>
                     </ul>
                 </header>
                 <div className="question-list">

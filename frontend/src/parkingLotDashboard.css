@@ -14,9 +14,11 @@
     width: 25%;
     display: flex;
     list-style: none;
-    justify-content: space-between;
+
 }
 
 .dashboard-nav li {
-    background: blue;
+    margin-top: .5em;
+    font-size: 1.5em;
+    margin-right: auto;
 }
