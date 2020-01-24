@@ -1,4 +1,5 @@
 import React from "react";
+import '../parkingLotDashboard.css';
 
 class Question extends React.Component {
     state = {
@@ -7,9 +8,8 @@ class Question extends React.Component {
     render() {
         return(
             <div>
-                <p>{this.props.question}</p>
-                <div>
-
+                <div className='question-wrapper'>
+                    <p className='question'>{this.props.question}</p>
                 </div>
             </div>
         )
