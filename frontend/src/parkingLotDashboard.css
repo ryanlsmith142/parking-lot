@@ -1,4 +1,4 @@
-.main-div {
+.header-div {
     height: 100vh;
     width: 100%;
 }
@@ -22,3 +22,24 @@
     font-size: 1.5em;
     margin-right: auto;
 }
+
+.main-div {
+    display: flex;
+    height: 100vh;
+}
+
+.user-profile-details {
+    height: 100vh;
+    width: 25%;
+    border: 1px black solid;
+    display: grid;
+    grid-template-rows: 10% 40% 50%;
+}
+
+.question-div {
+    height: 100vh;
+    width: 75%;
+    border: 1px black solid;
+}
+
+
